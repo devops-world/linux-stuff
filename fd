@@ -1,0 +1,12 @@
+-exec rm -f {} \; (or, equivalently, -exec rm -f {} ';')
+This will run rm -f on each file; e.g.,
+
+rm -f /var/dtpdev/tmp/A1/B1; rm -f /var/dtpdev/tmp/A1/B2; rm -f /var/dtpdev/tmp/A1/B3; …
+-exec rm -f {} +
+This will run rm -f on many files at once; e.g.,
+rm -f /var/dtpdev/tmp/A1/B1 /var/dtpdev/tmp/A1/B2 /var/dtpdev/tmp/A1/B3 …
+
+find /var/dtpdev/tmp/ -type f -mtime +15 -exec rm -f {} +
+for x in $(find /var/dtpdev/tmp/ -type f -mtime +15); do rm "$x"; done
+ 
+ 
